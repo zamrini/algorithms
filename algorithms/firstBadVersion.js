@@ -25,6 +25,9 @@ Output: 1
 Constraints:
 
 1 <= bad <= n <= 231 - 1
+
+@param {function} isBadVersion()
+@return {function}
 */
 
 var solution = (isBadVersion) => {
@@ -33,6 +36,17 @@ var solution = (isBadVersion) => {
    * @return {integer} The first bad version
    */
   return function(n) {
+      let left = 0;
+      let right = n;
       
+      while (left < right) {
+        let pivot = Math.floor((left + right) / 2);
+        if (isBadVersion(pivot)) {
+          right = pivot;
+        } else if (!isBadVersion(pivot)) {
+          left =  pivot + 1;
+        }
+      };
+      return left;
   };
 };
