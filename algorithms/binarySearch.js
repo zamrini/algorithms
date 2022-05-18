@@ -32,7 +32,7 @@ var search = (nums, target) => {
     // if we find the target, return the index
     // if the target is less than the nums[midpoint], adjust right border left of midpoint
     // if target is greater, adjust left border
-    let pivot = Math.floor(left + right) / 2;
+    let pivot = Math.floor((left + right) / 2);
 
     if (nums[pivot] == target) {
       return pivot;
@@ -50,3 +50,4 @@ var search = (nums, target) => {
 
 console.log('expect to be 4: ', search([-1, 0, 3, 5, 9, 12], 9)); // expect to be 4
 console.log('expect to be -1: ', search([-1, 0, 3, 5, 9, 12], 2)); // expect to be 2
+console.log('expect to be 1: ', search([2, 5], 5));
