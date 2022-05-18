@@ -22,6 +22,28 @@ All the integers in nums are unique.
 nums is sorted in ascending order.
 */
 
-var search = function(nums, target) {
-    
+var search = (nums, target) => {
+  // set parameters to modify search midpoint
+  let left = 0;
+  let right = nums.length - 1; // 5
+
+  // while there are still valid indices to search
+  while (left <= right) {
+    // if we find the target, return the index
+    // if the target is less than the nums[midpoint], adjust right border left of midpoint
+    // if target is greater, adjust left border
+    let pivot = Math.floor(left + right) / 2;
+
+    if (nums[pivot] == target) {
+      return pivot;
+    }
+
+    if (target < nums[pivot]) {
+      right = pivot - 1;
+    } else {
+      left = pivot + 1;
+    }
+  }
+  // if target does not exist in nums, return -1
+  return -1;
 };
