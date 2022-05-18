@@ -3,18 +3,16 @@ Given a sorted array of distinct integers and a target value, return the index i
 
 You must write an algorithm with O(log n) runtime complexity.
 
- 
 
 Example 1:
-
 Input: nums = [1,3,5,6], target = 5
 Output: 2
-Example 2:
 
+Example 2:
 Input: nums = [1,3,5,6], target = 2
 Output: 1
-Example 3:
 
+Example 3:
 Input: nums = [1,3,5,6], target = 7
 Output: 4
  
@@ -27,6 +25,24 @@ nums contains distinct values sorted in ascending order.
 -104 <= target <= 104
 */
 
-var searchInsert = function(nums, target) {
-    
+var searchInsert = function (nums, target) {
+  let left = 0;
+  let right = nums.length;
+
+  while (left < right) {
+    let pivot = Math.floor((left + right) / 2);
+
+    if (nums[pivot] === target) {
+      return pivot;
+    } else if (nums[pivot] < target) {
+      left = pivot + 1;
+    } else {
+      right = pivot;
+    }
+  }
+
+  return left;
 };
+
+console.log('expect to be index 1: ', searchInsert([1, 3, 5, 6], 2));
+console.log('expect to be index 4: ', searchInsert([1, 3, 5, 6], 7));
