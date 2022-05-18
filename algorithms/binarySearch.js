@@ -47,3 +47,6 @@ var search = (nums, target) => {
   // if target does not exist in nums, return -1
   return -1;
 };
+
+console.log('expect to be 4: ', search([-1, 0, 3, 5, 9, 12], 9)); // expect to be 4
+console.log('expect to be -1: ', search([-1, 0, 3, 5, 9, 12], 2)); // expect to be 2
