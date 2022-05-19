@@ -34,32 +34,22 @@ Could you do it in-place with O(1) extra space?
 */
 
 var rotate = (nums, k) => {
-  // initialize result array
-  var resultArray = nums;
-  // track how many rotations left
-  var rotationsLeft = k;
+  const n = nums.length;
 
-  // while there are still rotations to do
-  while (rotationsLeft > 0) {
-    // push the 1st element (shifted) to the result array
-    resultArray.unshift(nums.pop());
-    // decrement number of rotations left
-    rotationsLeft--;
-  }
+  k %= n;
 
-  // return result array
-  return resultArray;
+  reverse(nums, 0, n - 1);
+  reverse(nums, 0, k - 1);
+  reverse(nums, k, n - 1);
+  console.log('nums: ', nums);
 };
 
 var reverse = (arr, start, end) => {
-  while(start < end) {
-    [arr[start], arr[end] = arr[end], arr[start]]
-    start++
-    end--
+  while (start < end) {
+    [arr[start], arr[end]] = [arr[end], arr[start]];
+    start++;
+    end--;
   }
-}
-
-
+};
 
 console.log('expect to be [3,99,-1,-100]: ', rotate([-1, -100, 3, 99], 2));
-console.log('expect to be [5,6,7,1,2,3,4]: ', rotate([1, 2, 3, 4, 5, 6, 7], 3));
