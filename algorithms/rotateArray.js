@@ -33,4 +33,24 @@ Try to come up with as many solutions as you can. There are at least three diffe
 Could you do it in-place with O(1) extra space?
 */
 
-var rotate = function (nums, k) {};
+var rotate = (nums, k) => {
+  // initialize result array
+  var resultArray = nums;
+  // track how many rotations left
+  var rotationsLeft = k;
+
+  // while there are still rotations to do
+  while (rotationsLeft > 0) {
+    // push the 1st element (shifted) to the result array
+    resultArray.unshift(nums.pop());
+    // decrement number of rotations left
+    rotationsLeft--;
+  }
+
+  // return result array
+  return resultArray;
+};
+
+
+console.log('expect to be [3,99,-1,-100]: ', rotate([-1, -100, 3, 99], 2));
+console.log('expect to be [5,6,7,1,2,3,4]: ', rotate([1, 2, 3, 4, 5, 6, 7], 3));
