@@ -36,16 +36,20 @@ The tests are generated such that there is exactly one solution.
 */
 
 var twoSum = function (numbers, target) {
+  let left = 0;
+  let right = numbers.length - 1;
   let result = [];
-  for (let i = 1; i < numbers.length; i++) {
-    for (let j = 2; j < numbers.length; j++) {
-      if (numbers[i] + numbers[j] === target) {
-        result.push(i, j);
-        return result;
-      }
+  while (left < right) {
+    if (numbers[left] + numbers[right] === target) {
+      result.push(left + 1, right + 1);
+      return result;
+    } else if (numbers[left] + numbers[right] > target) {
+      right--;
+    } else if (numbers[left] + numbers[right] < target) {
+      left++;
     }
   }
 };
 
-console.log('expect to be [1,3]: ', twoSum([null, 2, 3, 4], 6));
+// console.log('expect to be [1,3]: ', twoSum([null, 2, 3, 4], 6));
 console.log('expect to be [1,2]: ', twoSum([null, 2, 7, 11, 15], 9));
