@@ -35,4 +35,17 @@ numbers is sorted in non-decreasing order.
 The tests are generated such that there is exactly one solution.
 */
 
-var twoSum = function (numbers, target) {};
+var twoSum = function (numbers, target) {
+  let result = [];
+  for (let i = 1; i < numbers.length; i++) {
+    for (let j = 2; j < numbers.length; j++) {
+      if (numbers[i] + numbers[j] === target) {
+        result.push(i, j);
+        return result;
+      }
+    }
+  }
+};
+
+console.log('expect to be [1,3]: ', twoSum([null, 2, 3, 4], 6));
+console.log('expect to be [1,2]: ', twoSum([null, 2, 7, 11, 15], 9));
