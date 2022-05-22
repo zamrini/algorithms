@@ -15,4 +15,15 @@ Input: s = ["H","a","n","n","a","h"]
 Output: ["h","a","n","n","a","H"]
 */
 
-var reverseString = function (s) {};
+var reverseString = function (s) {
+  return s.reverse();
+};
+
+console.log(
+  'expect to be ["o","l","l","e","h": ]',
+  reverseString(['h', 'e', 'l', 'l', 'o'])
+);
+console.log(
+  'expect to be ["h","a","n","n","a","H"]: ',
+  reverseString(['H', 'a', 'n', 'n', 'a', 'h'])
+);
