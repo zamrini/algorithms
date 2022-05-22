@@ -22,6 +22,19 @@ There is at least one word in s.
 All the words in s are separated by a single space.
 */
 
-var reverseWords = function(s) {
-    
+var reverseWords = function (s) {
+  let array = s.split(' ');
+
+  for (let i = 0; i < array.length; i++) {
+    array[i] = array[i].split('').reverse().join('');
+  }
+
+  let result = array.join(' ');
+
+  return result;
 };
+
+console.log(
+  'expect to be "s\'teL ekat edoCteeL tsetnoc": ',
+  reverseWords("Let's take LeetCode contest")
+);
