@@ -27,4 +27,29 @@ Constraints:
 s consists of English letters, digits, symbols and spaces.
 */
 
-var lengthOfLongestSubstring = function (s) {};
+var lengthOfLongestSubstring = function (s) {
+  let pointerOne = head;
+  let pointerTwo = head;
+  let counter = n + 1;
+
+  while (pointerTwo) {
+    if (counter > 0) {
+      pointerTwo = pointerTwo.next;
+      counter--;
+    } else {
+      pointerOne = pointerOne.next;
+      pointerTwo = pointerTwo.next;
+    }
+  }
+  
+  if (!pointerOne.next && n > 0) {
+    delete head;
+  } else {
+    let target = pointerOne.next;
+    pointerOne.next = pointerOne.next.next;
+    delete target;
+  }
+  
+
+  return head;
+};
